@@ -37,9 +37,9 @@ const DropDownLinks = [
     }
 ]
 
-export default function Navbar() {
+export default function Navbar({ setShowPopUp }) {
   return (
-    <div className='bg-white shadow-sm'>
+    <div data-aos="fade" className='bg-white shadow-sm'>
         <div className="container flex justify-between py-4 sm:py-3">
             {/* logo-section */}
             <div className="font-bold text-3xl">
@@ -51,7 +51,7 @@ export default function Navbar() {
                     {
                         NavLinks.map(({id, name, link}) => (
                             <li key={id}>
-                                <a href={link} className="inline-block
+                                <a href={link} className="hidden sm:inline-block
                                 hover:text-primary text-xl font-semibold">
                                     {name}
                                 </a>
@@ -59,7 +59,7 @@ export default function Navbar() {
                         ))
                     }
                     {/* drop down and links */}
-                    <li className='cursor-pointer group'>
+                    <li className='hidden md:block cursor-pointer group'>
                         <a href="#" className="inline-block
                         hover:text-primary text-xl font-semibold">
                             <div className='flex items-center
@@ -93,7 +93,8 @@ export default function Navbar() {
                     <li>
                         <button className='flex justify-center items-center
                         gap-2 bg-secondary text-xl h-[40px]
-                        text-white px-5 py-2 hover:scale-105 duration-300'>
+                        text-white px-2 md:px-5 py-2 hover:scale-105 duration-300'
+                        onClick={() => {setShowPopUp(true)}}>
                             <FaUser className='text-xl'/>
                             <span>My Account</span>
                         </button>
